@@ -1,2 +1,0 @@
-# mpblog
-My personal blog.

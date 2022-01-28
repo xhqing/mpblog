@@ -1,4 +1,4 @@
 # It's My Personal Blog (MPBlog)
 
-## Repo Address
+## MPBlog Repo Address
 https://github.com/xhqing/mpblog

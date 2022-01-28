@@ -51,8 +51,10 @@ if __name__ == "__main__":
 
     gen_sidebar()
 
-    os.system("git add docs")
-    os.system("git commit 'dp'")
+    dp = "dp"
+    os.system("git add .")
+    print(f"git commit \'{dp}\'")
+    os.system(f"git commit \'{dp}\'")
     os.system("git push")
             
 

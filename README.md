@@ -30,6 +30,23 @@ dp
 It's very easy.
 ![img](20220128215228.jpg)
 
+## Preview your site
+It is recommended to install `docsify-cli` globally, which helps initializing and previewing the website locally.
+```bash
+npm i docsify-cli -g
+```
+Run the local server with `docsify serve`. You can preview your site in your browser on `http://localhost:3000`.
+```bash
+docsify serve docs
+```
+set alias in `~/.zshrc` for convenient
+```bash
+alias ds="docsify serve docs"
+```
+then
+```bash
+source ~/.zshrc
+```
 
 ## LICENSE
 MIT

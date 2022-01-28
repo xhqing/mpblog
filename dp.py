@@ -14,6 +14,25 @@ def gen_sidebar():
         for mdf in post_mdfiles:
             f.write(f"   - [{mdf[:-3]}](post/{mdf})\n")
 
+def modify_tr_operator():
+    post_mdfiles = os.listdir("docs/post")
+    for string in post_mdfiles:
+        if string[-3:] != ".md":
+            post_mdfiles.remove(string)
+
+    for mdf in post_mdfiles:
+        with open("docs/post/"+mdf, "r") as f:
+            lines = f.readlines()
+        for line in lines:
+            if "\\tr" in line:
+                index = lines.index(line)
+                lines[index] = lines[index].replace("\\tr","\operatorname{tr}")
+
+        with open("docs/post/"+mdf, "w") as f:
+            for line in lines:
+                f.write(line)
+
+
 if __name__ == "__main__":
 
     post_mdfiles = os.listdir("./post")
@@ -50,6 +69,7 @@ if __name__ == "__main__":
                 f.write(line)
 
     gen_sidebar()
+    modify_tr_operator()
 
     dp = "dp"
     os.system(f"git add . && git commit -m \'{dp}\' && git push")

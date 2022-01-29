@@ -1,25 +1,25 @@
 ## 什么是数据中心化？
 
-数据中心化可以理解为把样本集的中心平移到坐标原点的位置，或理解为把坐标平移到样本集中心的位置，这个“中心”就是样本均值，因此容易理解平移后的样本均值为$\mathbf{0}$。
+数据中心化可以理解为把样本集的中心平移到坐标原点的位置，或理解为把坐标平移到样本集中心的位置，这个“中心”就是样本均值，因此容易理解平移后的样本均值为$\boldsymbol{0}$。
 
-具体地，假设样本集$D$中的某一个样本为$\mathbf{x}_i$，共有$m$个样本，样本均值矢量记为$\mathbf{\mu}$，平移后的样本记为$\mathbf x_i'$，则
+具体地，假设样本集$D$中的某一个样本为$\boldsymbol{x}_i$，共有$m$个样本，样本均值矢量记为$\boldsymbol{\mu}$，平移后的样本记为$\boldsymbol x_i'$，则
 $$
-\mathbf x_i' = \mathbf{x}_i-\boldsymbol{\mu}
+\boldsymbol x_i' = \boldsymbol{x}_i-\boldsymbol{\mu}
 $$
-记平移后的均值为$\mathbf{\mu}'$，则
+记平移后的均值为$\boldsymbol{\mu}'$，则
 $$
 \begin{aligned}
-\mathbf{\mu}' &= \frac{1}{m}\sum_{i=1}^m\mathbf x_i' \\
-&= \frac{1}{m}\sum_{i=1}^m\left(\mathbf{x}_i-\mathbf{\mu}\right) \\
-&= \mathbf{0}
+\boldsymbol{\mu}' &= \frac{1}{m}\sum_{i=1}^m\boldsymbol x_i' \\
+&= \frac{1}{m}\sum_{i=1}^m\left(\boldsymbol{x}_i-\boldsymbol{\mu}\right) \\
+&= \boldsymbol{0}
 \end{aligned}
 $$
 以上就是中心化(Zero-Centered)处理，就是每个样本都减去均值矢量，很简单。
 
-现在来进一步研究一下中心化处理后样本集的方差是否发生变化，假设原始样本集的方差矢量为$\mathbf{v}$，中心化处理后的样本集的方差矢量为$\mathbf{v}'$，特征维数为$d$，原坐标的单位正交基矢量为$\mathbf{e}_j$，$j=1,\cdots,d$，则
+现在来进一步研究一下中心化处理后样本集的方差是否发生变化，假设原始样本集的方差矢量为$\boldsymbol{v}$，中心化处理后的样本集的方差矢量为$\boldsymbol{v}'$，特征维数为$d$，原坐标的单位正交基矢量为$\boldsymbol{e}_j$，$j=1,\cdots,d$，则
 $$
 \begin{aligned}
-\mathbf{v} &= \sum_{j=1}^d\left(\frac{1}{m}\sum_{i=1}^m\left(\mathbf{x}_i-\mathbf{\mu}\right)\left(\mathbf{x}_i-\mathbf{\mu}\right)^T\circ \mathbf I\right)\mathbf{e}_j \\
+\boldsymbol{v} &= \sum_{j=1}^d\left(\frac{1}{m}\sum_{i=1}^m\left(\boldsymbol{x}_i-\boldsymbol{\mu}\right)\left(\boldsymbol{x}_i-\boldsymbol{\mu}\right)^{\mathrm T}\circ \mathbf I\right)\mathbf{e}_j \\
 &= \sum_{j=1}^d\left(\frac{1}{m}\sum_{i=1}^m\mathbf x_i'\mathbf x_i'^T\circ \mathbf I\right)\mathbf{e}_j\\
 &= \mathbf{v}'
 \end{aligned}

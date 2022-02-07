@@ -1,4 +1,4 @@
-## 什么是数据中心化？
+##  什么是数据中心化？
 
 数据中心化可以理解为把样本集的中心平移到坐标原点的位置，或理解为把坐标平移到样本集中心的位置，这个“中心”就是样本均值，因此容易理解平移后的样本均值为$\boldsymbol{0}$。
 
@@ -97,7 +97,31 @@ f\left(x\right)=
 0, &\text{其他} 
 \end{cases}
 $$
-
+因此有
+$$
+f\left(x'\sigma+\mu\right) =
+\begin{cases}
+\frac{1}{b-a}, &a<x'\sigma+\mu<b \\
+0, &\text{其他} 
+\end{cases}
+$$
+也即
+$$
+f\left(x\right) =
+\begin{cases}
+\frac{1}{b-a}=\frac{1}{\frac{b-\mu+\mu}{\sigma}\sigma-\frac{a-\mu+\mu}{\sigma}\sigma}=\frac{1}{\sigma}\frac{1}{\frac{b-\mu}{\sigma}-\frac{a-\mu}{\sigma}}, &\frac{a-\mu}{\sigma}<x'<\frac{b-\mu}{\sigma} \\
+0, &\text{其他} 
+\end{cases}
+$$
+两边同时乘以一个$\sigma$可得
+$$
+g\left(x'\right) = \sigma f\left(x\right) =
+\begin{cases}
+\frac{1}{\frac{b-\mu}{\sigma}-\frac{a-\mu}{\sigma}}, &\frac{a-\mu}{\sigma}<x'<\frac{b-\mu}{\sigma} \\
+0, &\text{其他} 
+\end{cases}
+$$
+由以上推导可以看出，在原始数据$x$服从形如$f\left(x\right)$的均匀分布的前提下，标准化变换后的$x'$服从形如$g\left(x'\right)$的均匀分布，并且仍然有$\sigma f\left(x\right)=g\left(x'\right)$的关系，因此证伪了数据经过标准化处理后都会服从标准正态分布的论断。
 
 
 

@@ -32,6 +32,21 @@ def modify_tr_operator():
             for line in lines:
                 f.write(line)
 
+def first_line_add_br():
+    post_mdfiles = os.listdir("docs/post")
+    for string in post_mdfiles:
+        if string[-3:] != ".md":
+            post_mdfiles.remove(string)
+
+    for mdf in post_mdfiles:
+        with open("docs/post/"+mdf, "r") as f:
+            lines = f.readlines()
+        if lines[0][:3] == "创建于":
+            lines[0] = lines[0].replace("\n","<br>\n")
+
+        with open("docs/post/"+mdf, "w") as f:
+            for line in lines:
+                f.write(line)
 
 if __name__ == "__main__":
 
@@ -70,6 +85,7 @@ if __name__ == "__main__":
 
     gen_sidebar()
     modify_tr_operator()
+    first_line_add_br()
 
     dp = "dp"
     os.system(f"git add . && git commit -m \'{dp}\' && git push")

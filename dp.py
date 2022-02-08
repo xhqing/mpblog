@@ -63,6 +63,10 @@ if __name__ == "__main__":
             if line[:2] == "# ":
                 raise TitleError(f"""\033[01;31;01m {mdf} {line} Please use 2 '#', {'#'+line}\033[01;31;01m""")
 
+    docs_sub = os.listdir("./docs")
+    if "post" in docs_sub:
+        os.system("rm -rf post")
+
     os.system("cp -r ./post ./docs/")
     post_mdfiles = os.listdir("./docs/post")
     for string in post_mdfiles:

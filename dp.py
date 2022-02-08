@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
     docs_sub = os.listdir("./docs")
     if "post" in docs_sub:
-        os.system("rm -rf post")
+        os.system("rm -rf ./docs/post")
 
     os.system("cp -r ./post ./docs/")
     post_mdfiles = os.listdir("./docs/post")

@@ -4,6 +4,9 @@ import time
 class TitleError(Exception):
     """TitleError"""
 
+class TitleDuplicated(Exception):
+    """Title Duplicated"""
+
 def is_cn(strs):
     for _char in strs:
         if not '\u4e00' <= _char <= '\u9fa5':
@@ -31,13 +34,17 @@ def write_keywords():
 
 def write_createtime():
     with open(f"./post/{post_title}.md", "w") as f:
-        f.write("创建于 " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n")
+        f.write("创建于 " + time.strftime("%Y-%m-%d", time.localtime()) + "\n")
 
 if __name__ == "__main__":
     try:
         post_title = sys.argv[1]
     except IndexError:
         raise TitleError(f"""\033[01;31;01m no title, `python3 np.py your_post_title`\033[01;31;01m""")
+
+    cpost_dir = os.listdir("./post")
+    if f"{post_title}.md" in cpost_dir:
+        raise TitleDuplicated(f"""\033[01;31;01m {post_title}.md has already exist in ./post, please choose another one. \033[01;31;01m""")
 
     os.system(f"touch ./post/{post_title}.md")
     
@@ -48,7 +55,7 @@ if __name__ == "__main__":
     keywords_list = []
     while True:
         if first_input:
-            print("请输入本篇文章的关键词(仅支持中英文词组, 输入字母`q`退出): ")
+            print("请输入本篇文章的关键词(仅支持中英文词组, 输入字母`q`退出, `回车`确定): ")
             first_input = False
         else:
             print("已经添加的关键词: ", keywords_list)

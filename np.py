@@ -65,9 +65,11 @@ if __name__ == "__main__":
         if keyword == "q":
             write_keywords()
             break
-
-        if is_cn(keyword) or is_en(keyword):
-            keywords_list.append(keyword)
+        
+        keywords_list.append(keyword)
+        
+        # if is_cn(keyword) or is_en(keyword):
+        #     keywords_list.append(keyword)
             # print("是否要继续添加关键词? y/n")
             # while True:
             #     yorn = input()
@@ -84,8 +86,8 @@ if __name__ == "__main__":
             #     write_keywords()
             #     break
 
-        else:
-            print("""添加失败, 如果是中文关键词请输入全中文字符, 如果是英文关键词只支持大小写字母和空格字符.""")
+        # else:
+        #     print("""添加失败, 如果是中文关键词请输入全中文字符, 如果是英文关键词只支持大小写字母和空格字符.""")
     
 
     os.system(f"open ./post/{post_title}.md")

@@ -28,7 +28,7 @@ dp
 
 ## GitHub Page Setting
 It's very easy.
-![img](20220128215228.jpg)
+![img](img/20220128215228.jpg)
 
 ## Preview your site
 It is recommended to install `docsify-cli` globally, which helps initializing and previewing the website locally.

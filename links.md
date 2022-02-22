@@ -34,3 +34,11 @@ https://virtocean.com/#
 11、默沙东诊疗手册
 https://www.msdmanuals.cn/?ruleredirectid=14#mission
 
+12、在线积分计算器
+https://www.integral-calculator.com/
+
+13、在线微分计算器
+https://www.derivative-calculator.net/#
+
+14、code-server安装
+https://blog.csdn.net/weixin_44852935/article/details/113177886

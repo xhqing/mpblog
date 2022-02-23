@@ -42,3 +42,10 @@ https://www.derivative-calculator.net/#
 
 14、code-server安装
 https://blog.csdn.net/weixin_44852935/article/details/113177886
+
+15、微软文本转语音
+https://azure.microsoft.com/zh-cn/services/cognitive-services/text-to-speech/#overview
+
+16、AI生成头像
+https://waifulabs.com/
+

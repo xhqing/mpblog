@@ -10,6 +10,7 @@ http://www.12348.gov.cn/#/homepage
 https://www.codingfont.com/
 
 4、LKs网站推荐站
+https://www.youtube.com/watch?v=E8C6UwEYecQ
 https://xiangjianan.gitee.io/lks/
 
 5、在线工具箱

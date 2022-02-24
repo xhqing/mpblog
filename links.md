@@ -50,3 +50,5 @@ https://azure.microsoft.com/zh-cn/services/cognitive-services/text-to-speech/#ov
 16、AI生成头像
 https://waifulabs.com/
 
+17、专业的学术讨论社区
+https://readpaper.com/

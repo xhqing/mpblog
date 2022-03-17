@@ -53,7 +53,7 @@ https://waifulabs.com/
 17、专业的学术讨论社区
 https://readpaper.com/
 
-18、python国内下载源
+<br>18、python国内下载源<\br>
 清华大学：pip install lightgbm -i https://pypi.tuna.tsinghua.edu.cn/simple
 阿里云：pip install lightgbm -i https://mirrors.aliyun.com/pypi/simple/
 豆瓣：pip install lightgbm -i https://pypi.douban.com/simple/

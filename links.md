@@ -59,3 +59,6 @@ https://readpaper.com/
 <br>豆瓣：pip install lightgbm -i https://pypi.douban.com/simple/
 <br>中国科学技术大学：pip install lightgbm -i https://pypi.mirrors.ustc.edu.cn/simple/
 <br>华中科技大学：pip install lightgbm -i https://pypi.hustunique.com/
+
+19、pipenv 
+https://pipenv.pypa.io/en/latest/

@@ -58,19 +58,19 @@ https://readpaper.com/
 ```bash
 pip install lightgbm -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
-<br>阿里云：
+阿里云：
 ```bash
 pip install lightgbm -i https://mirrors.aliyun.com/pypi/simple/
 ```
-<br>豆瓣：
+豆瓣：
 ```bash
 pip install lightgbm -i https://pypi.douban.com/simple/
 ```
-<br>中国科学技术大学：
+中国科学技术大学：
 ```bash
 pip install lightgbm -i https://pypi.mirrors.ustc.edu.cn/simple/
 ```
-<br>华中科技大学：
+华中科技大学：
 ```bash
 pip install lightgbm -i https://pypi.hustunique.com/
 ```

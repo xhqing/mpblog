@@ -54,11 +54,25 @@ https://waifulabs.com/
 https://readpaper.com/
 
 18、python国内下载源
-<br>清华大学：pip install lightgbm -i https://pypi.tuna.tsinghua.edu.cn/simple
-<br>阿里云：pip install lightgbm -i https://mirrors.aliyun.com/pypi/simple/
-<br>豆瓣：pip install lightgbm -i https://pypi.douban.com/simple/
-<br>中国科学技术大学：pip install lightgbm -i https://pypi.mirrors.ustc.edu.cn/simple/
-<br>华中科技大学：pip install lightgbm -i https://pypi.hustunique.com/
-
+<br>清华大学：
+```bash
+pip install lightgbm -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+<br>阿里云：
+```bash
+pip install lightgbm -i https://mirrors.aliyun.com/pypi/simple/
+```
+<br>豆瓣：
+```bash
+pip install lightgbm -i https://pypi.douban.com/simple/
+```
+<br>中国科学技术大学：
+```bash
+pip install lightgbm -i https://pypi.mirrors.ustc.edu.cn/simple/
+```
+<br>华中科技大学：
+```bash
+pip install lightgbm -i https://pypi.hustunique.com/
+```
 19、pipenv 
 https://pipenv.pypa.io/en/latest/

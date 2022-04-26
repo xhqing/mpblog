@@ -41,7 +41,7 @@ docsify serve docs
 ```
 set alias in `~/.zshrc` for convenient
 ```bash
-alias ds="docsify serve docs"
+alias dsd="docsify serve docs"
 ```
 then
 ```bash

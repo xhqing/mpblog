@@ -28,9 +28,9 @@ def is_en(strs):
             break
     return is_enf
 
-def write_keywords():
-    with open(f"./post/{post_title}.md", "a") as f:
-        f.write("关键词: " + ", ".join(keywords_list) + ".")
+# def write_keywords():
+#     with open(f"./post/{post_title}.md", "a") as f:
+#         f.write("关键词: " + ", ".join(keywords_list) + ".")
 
 def write_createtime():
     with open(f"./post/{post_title}.md", "w") as f:
@@ -49,24 +49,25 @@ if __name__ == "__main__":
     os.system(f"touch ./post/{post_title}.md")
     
     write_createtime()
-   
+    with open(f"./post/{post_title}.md", "a") as f:
+        f.write("关键词: ")
     # add keywords
-    first_input = True
-    keywords_list = []
-    while True:
-        if first_input:
-            print("请输入本篇文章的关键词(仅支持中英文词组, 输入字母`q`退出, `回车`确定): ")
-            first_input = False
-        else:
-            print("已经添加的关键词: ", keywords_list)
-            print("请继续添加关键词: ")
+    # first_input = True
+    # keywords_list = []
+    # while True:
+    #     if first_input:
+    #         print("请输入本篇文章的关键词(仅支持中英文词组, 输入字母`q`退出, `回车`确定): ")
+    #         first_input = False
+    #     else:
+    #         print("已经添加的关键词: ", keywords_list)
+    #         print("请继续添加关键词: ")
         
-        keyword = input()
-        if keyword == "q":
-            write_keywords()
-            break
+    #     keyword = input()
+    #     if keyword == "q":
+    #         write_keywords()
+    #         break
         
-        keywords_list.append(keyword)
+    #     keywords_list.append(keyword)
         
         # if is_cn(keyword) or is_en(keyword):
         #     keywords_list.append(keyword)

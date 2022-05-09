@@ -92,6 +92,6 @@ if __name__ == "__main__":
     modify_tr_operator()
     first_line_add_br()
 
-    dp = "dp"
-    os.system(f"git add . && git commit -m \'{dp}\' && git push")
+   # dp = "dp"
+   # os.system(f"git add . && git commit -m \'{dp}\' && git push")
 

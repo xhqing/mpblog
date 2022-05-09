@@ -20,10 +20,12 @@ pwd # /xx/xxx/.../mpblog/
 3. usage
 ```bash
 # new post, it will generate a your_post_title.md file in `./post` and open it automatically with typora (I use typora).
-np your_post_title
+np your_post_title # np "post_name"
 
-# deploy on github. copy `./post` to `./docs/` and check or modify something automatically, git push the whole mpblog repo finally.
-dp
+# deploy locally. copy `./post` to `./docs/` and check or modify something automatically.
+dp 
+
+# deploy on github just need git push all changes to remote mpblog repo.
 ```
 
 ## GitHub Page Setting
@@ -41,7 +43,7 @@ docsify serve docs
 ```
 set alias in `~/.zshrc` for convenient
 ```bash
-alias dsd="docsify serve docs"
+alias ds="docsify serve docs"
 ```
 then
 ```bash

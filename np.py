@@ -33,7 +33,7 @@ def is_en(strs):
 #         f.write("关键词: " + ", ".join(keywords_list) + ".")
 
 def write_createtime():
-    with open(f"./post/{post_title}.md", "w") as f:
+    with open(f"./post/{post_title}--未完成.md", "w") as f:
         f.write("创建于 " + time.strftime("%Y-%m-%d", time.localtime()) + "\n")
 
 if __name__ == "__main__":
@@ -43,13 +43,13 @@ if __name__ == "__main__":
         raise TitleError(f"""\033[01;31;01m no title, `python3 np.py your_post_title`\033[01;31;01m""")
 
     cpost_dir = os.listdir("./post")
-    if f"{post_title}.md" in cpost_dir:
-        raise TitleDuplicated(f"""\033[01;31;01m {post_title}.md has already exist in ./post, please choose another one. \033[01;31;01m""")
+    if f"{post_title}.md" in cpost_dir or f"{post_title}--未完成.md" in cpost_dir:
+        raise TitleDuplicated(f"""\033[01;31;01m {post_title}.md or {post_title}-未完成.md has already exist in ./post, please choose another one. \033[01;31;01m""")
 
-    os.system(f"touch ./post/{post_title}.md")
+    os.system(f"touch post/{post_title}--未完成.md")
     
     write_createtime()
-    with open(f"./post/{post_title}.md", "a") as f:
+    with open(f"./post/{post_title}--未完成.md", "a") as f:
         f.write("关键词: ")
     # add keywords
     # first_input = True
@@ -91,4 +91,4 @@ if __name__ == "__main__":
         #     print("""添加失败, 如果是中文关键词请输入全中文字符, 如果是英文关键词只支持大小写字母和空格字符.""")
     
 
-    os.system(f"open ./post/{post_title}.md")
+    os.system(f"open ./post/{post_title}--未完成.md")

@@ -1,0 +1,27 @@
+[MUSIC PLAYING]
+Have you ever wondered how your cellphone
+can detect objects and discriminate between boats
+and a bridge?
+Or were you ever surprised when Amazon
+was able to recommend you a book that you didn't even
+know that you wanted it.
+So those are just two examples of what machine learning
+technology can do for you today.
+But imagine what it can do in all other areas of our lives.
+And part of our job at MIT is actually
+to imagine this future.
+And here we're working on all different application
+of machine learning and AI, ranging from drug discovery,
+identifying who may be sick, or developing new robotics
+applications, or helping people to live happier and longer.
+So there are lots and lots of applications
+out there, but what's so interesting about it--
+that in terms of algorithms, there
+is a relatively small toolkit of algorithms
+you need to learn to understand how
+these different applications can work so nicely
+and be integrated in our daily life.
+So that's what this class is about--
+understanding this technology.
+And I hope that, by the end of this class,
+you would actually know how your cellphone can detect bridges.

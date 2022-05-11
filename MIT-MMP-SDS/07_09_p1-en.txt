@@ -1,0 +1,124 @@
+
+So today we will talk about recommender systems.
+
+I'm sure that all of you have heard about Netflix's challenge
+where the goal was to be able to predict which movie
+the user would like to watch.
+So this type of problem is called recommender problems.
+And almost every single e-commerce website
+uses this recommender algorithm to advise you
+on which products you may be interested in.
+So today we will cover the technologies
+that enable machines to learn these types of preferences
+based on the prior choices that the user has made.
+So we will start today's lecture by looking at first,
+the problem definition.
+And we will see that there are many ways
+to think about this problem.
+Problem definition.
+Next, we will take an approach, which
+would be very, very simple approach,
+and historically, this was the first generation
+of recommender algorithms.
+And this approach is called K-Nearest Neighbor algorithm.
+And finally, we will talk about the approach which
+is prevalently used today.
+And this will be most of our lecture.
+And the approach is called matrix factorization
+or collaborative filtering.
+
+So let's start with a problem definition.
+So I will first introduce annotations
+that we will be using throughout the lecture.
+And following the idea of Netflix,
+just to make it very concrete, I'm
+going to be talking about users and movies.
+So imagine to yourself that you have a very big matrix.
+Here you would have all possible users in your system.
+So with users, we have n, users, and we will have m, movies.
+So this will be n by m matrix.
+And the name we would call this matrix is going to be matrix Y.
+And when we're looking at a particular element ai,
+we are looking maybe at user a and his or her preference
+for movie i.
+So Yai would remember how the user
+ranked a particular product.
+And in this case you can say some websites allow
+you to put a number from 1 to 5, other one you can do sums up,
+sums down.
+There are many different ways to define it.
+For us, we would just assume it's some continuous number.
+It doesn't matter.
+You can always translate it to the scale
+you want to have it in.
+So now, if we're going back to the Netflix problem, which
+actually brought this big question to the broad machine
+learning community, the goal was to make this prediction based
+on prior choices of the users.
+And in the case of the Netflix challenge,
+they looked at 0.5 million users.
+So our n was 0.5 million.
+And the number of movies was 18,000 movies.
+The interesting part about it is that most of this matrix
+is actually empty.
+It's a very, very sparse matrix.
+On average, each one of the movies
+is only ranked by 5,000 users.
+5,000 out of 0.5 million.
+So most of this matrix will be empty,
+and here and there you would have
+the rankings of the users that already watched the movie.
+And now the goal of the algorithm
+is actually to fill out the whole matrix
+so that now there is some user 1 and the movie 1,
+which we originally didn't record
+the number for that user, we want to somehow predict
+what will be the opinion of this user for the movie he
+or she hasn't seen.
+And the question is, how can we address this problem.
+So the first thing that some of you
+are already thinking, based on our previous linear regression
+lectures, say, oh, this is really a regression problem.
+Maybe what I can do, I have my movie,
+I've seen how this user ranked previous movies,
+and now based on the features of the movies,
+I can predict the ranking.
+That's what we've done in supervised learning.
+We just think about feature vector-- maybe
+who participated in the movie, was it European movie,
+and did it have a happy ending-- whatever features you want, you
+represent it as a feature vector,
+and then you use regression to predict
+the scoring of this movie.
+However, the approach that I will show you today
+doesn't relate to traditional supervised learning directly.
+And there are several reasons why we may not want
+to use the regression here.
+So the first reason is that our assumption
+is that we know what features actually determine the ranking
+and that we can automatically extract those features.
+So you can say I can take my features from IMDb.
+You could.
+But IMDb doesn't record whether this movie had a happy
+ending or not, and maybe for that particular user,
+this is really important.
+And if you're thinking about much bigger matrices
+like Amazon, all the different products that are on Amazon,
+it's simply not clear what features
+are we going to record, and it will be really huge feature
+vectors.
+The second problem is that in order for us
+to do linear regression for a specific user,
+we actually need to have enough rankings of this user.
+So if we just have a few rankings,
+we would be unable to recommend this user any new products.
+So given these two limitations, we
+will take a different approach.
+And the key idea of this different approach
+is that we can recommend the product to our user
+but identifying his or her similarity
+to other users in our pool.
+Because maybe you are assuming that there
+are people who are similar to me in some way,
+I should be able to borrow the ranking of users
+who are similar to me to predict my own ranking.

@@ -1,0 +1,496 @@
+0
+00:00:00,000 --> 00:00:01,130
+
+
+1
+00:00:01,130 --> 00:00:04,250
+So today we will talk about recommender systems.
+
+2
+00:00:04,250 --> 00:00:13,890
+
+
+3
+00:00:13,890 --> 00:00:17,720
+I'm sure that all of you have heard about Netflix's challenge
+
+4
+00:00:17,720 --> 00:00:22,160
+where the goal was to be able to predict which movie
+
+5
+00:00:22,160 --> 00:00:25,430
+the user would like to watch.
+
+6
+00:00:25,430 --> 00:00:28,250
+So this type of problem is called recommender problems.
+
+7
+00:00:28,250 --> 00:00:33,220
+And almost every single e-commerce website
+
+8
+00:00:33,220 --> 00:00:38,480
+uses this recommender algorithm to advise you
+
+9
+00:00:38,480 --> 00:00:41,070
+on which products you may be interested in.
+
+10
+00:00:41,070 --> 00:00:43,070
+So today we will cover the technologies
+
+11
+00:00:43,070 --> 00:00:46,400
+that enable machines to learn these types of preferences
+
+12
+00:00:46,400 --> 00:00:51,420
+based on the prior choices that the user has made.
+
+13
+00:00:51,420 --> 00:00:56,060
+So we will start today's lecture by looking at first,
+
+14
+00:00:56,060 --> 00:00:57,530
+the problem definition.
+
+15
+00:00:57,530 --> 00:00:59,270
+And we will see that there are many ways
+
+16
+00:00:59,270 --> 00:01:01,640
+to think about this problem.
+
+17
+00:01:01,640 --> 00:01:05,519
+Problem definition.
+
+18
+00:01:05,519 --> 00:01:08,320
+Next, we will take an approach, which
+
+19
+00:01:08,320 --> 00:01:10,210
+would be very, very simple approach,
+
+20
+00:01:10,210 --> 00:01:13,610
+and historically, this was the first generation
+
+21
+00:01:13,610 --> 00:01:15,500
+of recommender algorithms.
+
+22
+00:01:15,500 --> 00:01:22,970
+And this approach is called K-Nearest Neighbor algorithm.
+
+23
+00:01:22,970 --> 00:01:26,030
+And finally, we will talk about the approach which
+
+24
+00:01:26,030 --> 00:01:28,440
+is prevalently used today.
+
+25
+00:01:28,440 --> 00:01:30,920
+And this will be most of our lecture.
+
+26
+00:01:30,920 --> 00:01:34,010
+And the approach is called matrix factorization
+
+27
+00:01:34,010 --> 00:01:35,806
+or collaborative filtering.
+
+28
+00:01:35,806 --> 00:01:44,960
+
+
+29
+00:01:44,960 --> 00:01:47,550
+So let's start with a problem definition.
+
+30
+00:01:47,550 --> 00:01:50,450
+So I will first introduce annotations
+
+31
+00:01:50,450 --> 00:01:53,420
+that we will be using throughout the lecture.
+
+32
+00:01:53,420 --> 00:01:55,580
+And following the idea of Netflix,
+
+33
+00:01:55,580 --> 00:01:57,680
+just to make it very concrete, I'm
+
+34
+00:01:57,680 --> 00:02:01,020
+going to be talking about users and movies.
+
+35
+00:02:01,020 --> 00:02:06,800
+So imagine to yourself that you have a very big matrix.
+
+36
+00:02:06,800 --> 00:02:11,210
+Here you would have all possible users in your system.
+
+37
+00:02:11,210 --> 00:02:19,460
+So with users, we have n, users, and we will have m, movies.
+
+38
+00:02:19,460 --> 00:02:23,450
+So this will be n by m matrix.
+
+39
+00:02:23,450 --> 00:02:28,100
+And the name we would call this matrix is going to be matrix Y.
+
+40
+00:02:28,100 --> 00:02:33,070
+And when we're looking at a particular element ai,
+
+41
+00:02:33,070 --> 00:02:39,260
+we are looking maybe at user a and his or her preference
+
+42
+00:02:39,260 --> 00:02:41,390
+for movie i.
+
+43
+00:02:41,390 --> 00:02:44,600
+So Yai would remember how the user
+
+44
+00:02:44,600 --> 00:02:47,460
+ranked a particular product.
+
+45
+00:02:47,460 --> 00:02:50,270
+And in this case you can say some websites allow
+
+46
+00:02:50,270 --> 00:02:54,770
+you to put a number from 1 to 5, other one you can do sums up,
+
+47
+00:02:54,770 --> 00:02:55,340
+sums down.
+
+48
+00:02:55,340 --> 00:02:58,040
+There are many different ways to define it.
+
+49
+00:02:58,040 --> 00:03:00,960
+For us, we would just assume it's some continuous number.
+
+50
+00:03:00,960 --> 00:03:01,770
+It doesn't matter.
+
+51
+00:03:01,770 --> 00:03:03,590
+You can always translate it to the scale
+
+52
+00:03:03,590 --> 00:03:05,930
+you want to have it in.
+
+53
+00:03:05,930 --> 00:03:09,800
+So now, if we're going back to the Netflix problem, which
+
+54
+00:03:09,800 --> 00:03:14,600
+actually brought this big question to the broad machine
+
+55
+00:03:14,600 --> 00:03:19,550
+learning community, the goal was to make this prediction based
+
+56
+00:03:19,550 --> 00:03:21,440
+on prior choices of the users.
+
+57
+00:03:21,440 --> 00:03:24,450
+And in the case of the Netflix challenge,
+
+58
+00:03:24,450 --> 00:03:27,510
+they looked at 0.5 million users.
+
+59
+00:03:27,510 --> 00:03:30,320
+So our n was 0.5 million.
+
+60
+00:03:30,320 --> 00:03:35,150
+And the number of movies was 18,000 movies.
+
+61
+00:03:35,150 --> 00:03:38,990
+The interesting part about it is that most of this matrix
+
+62
+00:03:38,990 --> 00:03:39,830
+is actually empty.
+
+63
+00:03:39,830 --> 00:03:42,560
+It's a very, very sparse matrix.
+
+64
+00:03:42,560 --> 00:03:45,380
+On average, each one of the movies
+
+65
+00:03:45,380 --> 00:03:48,470
+is only ranked by 5,000 users.
+
+66
+00:03:48,470 --> 00:03:51,170
+5,000 out of 0.5 million.
+
+67
+00:03:51,170 --> 00:03:54,080
+So most of this matrix will be empty,
+
+68
+00:03:54,080 --> 00:03:55,910
+and here and there you would have
+
+69
+00:03:55,910 --> 00:04:01,220
+the rankings of the users that already watched the movie.
+
+70
+00:04:01,220 --> 00:04:03,400
+And now the goal of the algorithm
+
+71
+00:04:03,400 --> 00:04:07,550
+is actually to fill out the whole matrix
+
+72
+00:04:07,550 --> 00:04:11,690
+so that now there is some user 1 and the movie 1,
+
+73
+00:04:11,690 --> 00:04:13,580
+which we originally didn't record
+
+74
+00:04:13,580 --> 00:04:17,209
+the number for that user, we want to somehow predict
+
+75
+00:04:17,209 --> 00:04:21,380
+what will be the opinion of this user for the movie he
+
+76
+00:04:21,380 --> 00:04:24,080
+or she hasn't seen.
+
+77
+00:04:24,080 --> 00:04:27,750
+And the question is, how can we address this problem.
+
+78
+00:04:27,750 --> 00:04:29,660
+So the first thing that some of you
+
+79
+00:04:29,660 --> 00:04:33,920
+are already thinking, based on our previous linear regression
+
+80
+00:04:33,920 --> 00:04:37,220
+lectures, say, oh, this is really a regression problem.
+
+81
+00:04:37,220 --> 00:04:41,870
+Maybe what I can do, I have my movie,
+
+82
+00:04:41,870 --> 00:04:45,650
+I've seen how this user ranked previous movies,
+
+83
+00:04:45,650 --> 00:04:48,600
+and now based on the features of the movies,
+
+84
+00:04:48,600 --> 00:04:50,720
+I can predict the ranking.
+
+85
+00:04:50,720 --> 00:04:52,920
+That's what we've done in supervised learning.
+
+86
+00:04:52,920 --> 00:04:55,880
+We just think about feature vector-- maybe
+
+87
+00:04:55,880 --> 00:05:00,380
+who participated in the movie, was it European movie,
+
+88
+00:05:00,380 --> 00:05:03,320
+and did it have a happy ending-- whatever features you want, you
+
+89
+00:05:03,320 --> 00:05:04,880
+represent it as a feature vector,
+
+90
+00:05:04,880 --> 00:05:07,220
+and then you use regression to predict
+
+91
+00:05:07,220 --> 00:05:10,380
+the scoring of this movie.
+
+92
+00:05:10,380 --> 00:05:14,200
+However, the approach that I will show you today
+
+93
+00:05:14,200 --> 00:05:20,200
+doesn't relate to traditional supervised learning directly.
+
+94
+00:05:20,200 --> 00:05:23,140
+And there are several reasons why we may not want
+
+95
+00:05:23,140 --> 00:05:26,390
+to use the regression here.
+
+96
+00:05:26,390 --> 00:05:29,260
+So the first reason is that our assumption
+
+97
+00:05:29,260 --> 00:05:34,060
+is that we know what features actually determine the ranking
+
+98
+00:05:34,060 --> 00:05:37,430
+and that we can automatically extract those features.
+
+99
+00:05:37,430 --> 00:05:40,300
+So you can say I can take my features from IMDb.
+
+100
+00:05:40,300 --> 00:05:41,140
+You could.
+
+101
+00:05:41,140 --> 00:05:44,110
+But IMDb doesn't record whether this movie had a happy
+
+102
+00:05:44,110 --> 00:05:46,210
+ending or not, and maybe for that particular user,
+
+103
+00:05:46,210 --> 00:05:48,650
+this is really important.
+
+104
+00:05:48,650 --> 00:05:52,960
+And if you're thinking about much bigger matrices
+
+105
+00:05:52,960 --> 00:05:56,060
+like Amazon, all the different products that are on Amazon,
+
+106
+00:05:56,060 --> 00:05:57,760
+it's simply not clear what features
+
+107
+00:05:57,760 --> 00:06:01,270
+are we going to record, and it will be really huge feature
+
+108
+00:06:01,270 --> 00:06:02,620
+vectors.
+
+109
+00:06:02,620 --> 00:06:05,200
+The second problem is that in order for us
+
+110
+00:06:05,200 --> 00:06:08,620
+to do linear regression for a specific user,
+
+111
+00:06:08,620 --> 00:06:12,170
+we actually need to have enough rankings of this user.
+
+112
+00:06:12,170 --> 00:06:13,930
+So if we just have a few rankings,
+
+113
+00:06:13,930 --> 00:06:21,040
+we would be unable to recommend this user any new products.
+
+114
+00:06:21,040 --> 00:06:23,680
+So given these two limitations, we
+
+115
+00:06:23,680 --> 00:06:25,990
+will take a different approach.
+
+116
+00:06:25,990 --> 00:06:28,930
+And the key idea of this different approach
+
+117
+00:06:28,930 --> 00:06:33,730
+is that we can recommend the product to our user
+
+118
+00:06:33,730 --> 00:06:37,030
+but identifying his or her similarity
+
+119
+00:06:37,030 --> 00:06:40,240
+to other users in our pool.
+
+120
+00:06:40,240 --> 00:06:42,040
+Because maybe you are assuming that there
+
+121
+00:06:42,040 --> 00:06:45,770
+are people who are similar to me in some way,
+
+122
+00:06:45,770 --> 00:06:49,940
+I should be able to borrow the ranking of users
+
+123
+00:06:49,940 --> 00:06:53,790
+who are similar to me to predict my own ranking.
+

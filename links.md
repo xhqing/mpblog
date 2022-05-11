@@ -76,3 +76,12 @@ pip install lightgbm -i https://pypi.hustunique.com/
 ```
 19、pipenv 
 https://pipenv.pypa.io/en/latest/
+
+20、What is Classification & Regression Trees?
+https://www.codingninjas.com/blog/2020/12/02/what-is-classification-regression-trees/
+
+21、深入理解LightGBM
+https://mp.weixin.qq.com/s/zejkifZnYXAfgTRrkMaEww
+
+22、GBDT算法原理深入解析
+https://www.zybuluo.com/yxd/note/611571

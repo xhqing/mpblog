@@ -1,12 +1,15 @@
+创建于 2022-05-19
+关键词: 机器学习, 数据挖掘, logistic函数, 逻辑回归, 回归树
+
 ## Logistic Function与Logistic Regression
 
 Logistic Function最常见的定义形式如下：
 $$
-P(x) = \frac{1}{1+e^{-x}}\tag{1}
+P(x) = \frac{1}{1+e^{-x}} \tag{1}
 $$
-其中$$x\in R$$，$P(x)\in [0,1]$，实际上这个公式起源于伯努利分布，$$P(x)$$代表概率，关于其起源在此暂不赘述。
+其中$x\in \R$，$P(x)\in \left(0,1\right)$，实际上这个公式起源于伯努利分布，$$P(x)$$代表概率，关于其起源在此暂不赘述。
 
-公式$$(1)$$有一个重要的性质，即：
+公式$\left(1\right)$有一个重要的性质，即：
 $$
 \begin{equation}
 \begin{split}
@@ -19,7 +22,7 @@ P(-x) &= \frac{1}{1+e^x} \\
 \end{split}
 \end{equation} \tag{2}
 $$
-并且公式$$(1)$$的形式在逻辑回归二分类中被广泛应用，其中$$P$$通常代表预测样本属于正例的概率。假设$$\vec x$$代表由多个特征组成的样本向量，$$\vec\beta$$代表由每个特征的系数构成的向量，$$y$$代表样本的类别标记，$$y=1$$代表正例，$$y=0$$代表反例，则
+并且公式$\left(1\right)$的形式被用在了逻辑回归模型中，其中$P$代表预测样本属于正例的概率。假设$\boldsymbol x$代表样本向量，$\boldsymbol\beta$代表由每个特征的权重构成的向量，$y$代表样本的类别标记，$y=1$代表正例，$y=0$代表反例，则
 $$
 \begin{equation}
 \begin{split}

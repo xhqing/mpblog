@@ -7,45 +7,26 @@ Logistic Function最常见的定义形式如下：
 $$
 P(x) = \frac{1}{1+e^{-x}} \tag{1}
 $$
-其中$x\in \R$，$P(x)\in \left(0,1\right)$，实际上这个公式起源于伯努利分布，$$P(x)$$代表概率，关于其起源在此暂不赘述。
+其中$x\in \R$，$P(x)\in \left(0,1\right)$，实际上这个公式起源于伯努利分布，$P(x)$代表概率，关于其起源在此暂不赘述。
 
 公式$\left(1\right)$有一个重要的性质，即：
 $$
-\begin{equation}
-\begin{split}
-P(-x) &= \frac{1}{1+e^x} \\
-      &= \frac{1}{1+\frac{1}{e^{-x}}} \\
-      &= \frac{e^{-x}}{1+e^{-x}} \\
-      &= \frac{e^{-x}+1-1}{1+e^{-x}} \\
-      &= 1 - \frac{1}{1+e^{-x}} \\
-      &= 1 - P(x)
-\end{split}
-\end{equation} \tag{2}
+P(-x) = \frac{1}{1+e^x} = \frac{1}{1+\frac{1}{e^{-x}}} = \frac{e^{-x}}{1+e^{-x}} = \frac{e^{-x}+1-1}{1+e^{-x}} = 1 - \frac{1}{1+e^{-x}} = 1 - P(x)
 $$
 并且公式$\left(1\right)$的形式被用在了逻辑回归模型中，其中$P$代表预测样本属于正例的概率。假设$\boldsymbol x$代表样本向量，$\boldsymbol\beta$代表由每个特征的权重构成的向量，$y$代表样本的类别标记，$y=1$代表正例，$y=0$代表反例，则
 $$
-\begin{equation}
-\begin{split}
-P(y=1|\vec\beta,\vec x) &= \frac{1}{1+e^{-\vec\beta^T\vec x}} \\
-                        &= \frac{e^{\vec\beta \vec x}}{1+e^{\vec\beta \vec x}}
-\end{split}
-\end{equation} \tag{3}
+P(y=1|\boldsymbol\beta,\boldsymbol x) = \frac{1}{1+e^{-\boldsymbol\beta^\mathrm T\boldsymbol x}} = \frac{e^{\boldsymbol\beta^{\mathrm T} \boldsymbol x}}{1+e^{\boldsymbol\beta^{\mathrm T} \boldsymbol x}}
 $$
 
 $$
-\begin{equation}
-\begin{split}
-P(y=0|\vec\beta,\vec x) &= 1 - P(y=1|\vec\beta,\vec x) \\
-                        &= \frac{1}{1+e^{\vec\beta \vec x}}
-\end{split}
-\end{equation} \tag{4}
+P(y=0|\boldsymbol\beta,\boldsymbol x) = 1 - P(y=1|\boldsymbol\beta,\boldsymbol x) = \frac{1}{1+e^{\boldsymbol\beta^{\mathrm T} \boldsymbol x}}
 $$
 
-如果反例标记用$$-1$$表示，则预测正例样本的公式和预测反例样本的公式可以集成为一个公式：
+如果反例标记用$-1$表示，则预测正例样本的公式和预测反例样本的公式可以集成为一个公式：
 $$
-P(g=\pm1|\vec\beta,\vec x) = \frac{1}{1+e^{-g\vec\beta \vec x}} \tag{5}
+P(g=\pm1|\boldsymbol\beta,\boldsymbol x) = \frac{1}{1+e^{-g\boldsymbol\beta^{\mathrm T} \boldsymbol x}} \tag{5}
 $$
-其中$$g=1$$代表正例，$$g=-1$$代表反例。
+其中$g=1$代表正例，$g=-1$代表反例。
 
 ## 二进制交叉熵与Logistic Loss
 

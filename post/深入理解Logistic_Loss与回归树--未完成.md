@@ -30,27 +30,26 @@ $$
 
 ## 二进制交叉熵与Logistic Loss
 
-假设$$f$$是hypothesis function，而L是loss function，训练有监督学习器的时候实际上都是如下的优化问题：
+假设$f$是hypothesis function，而$L$是loss function，训练有监督学习器的时候实际上都是如下的优化问题：
 $$
-arg\min\sum_iL(y_i,f(\vec x_i)) \tag{6}
+\arg\min\sum_iL\left(y_i,f\left(\boldsymbol x_i\right)\right) \tag{6}
 $$
-我们已经知道如果是二分类器的话，且输出是概率形式，那么我们可以选择二进制交叉熵来作为loss function，比如假设$$f$$就是logistic function
+我们已经知道如果是二分类器的话，且输出是概率形式，那么我们可以选择二进制交叉熵来作为loss function，比如假设$f$就是logistic function
 $$
-f(\vec x) = \frac{1}{1+e^{-\vec\beta \vec x}} \tag{7}
+f(\boldsymbol x) = \frac{1}{1+e^{-\boldsymbol\beta^{\mathrm T} \boldsymbol x}} \tag{7}
 $$
 
 
-用二进制交叉熵作为loss function，正例标记为$$1$$，反例标记为$$0$$，则
+用二进制交叉熵作为loss function，正例标记为$1$，反例标记为$0$，则
 $$
-\begin{equation}
-\begin{split}
-L(y_i,f(\vec x_i)) &= -[y_ilog(f(\vec x_i))+(1-y_i)log(1-f(\vec x_i))] \\
+\begin{aligned}
+L\left(y_i,f(\boldsymbol x_i)\right) &= -[y_ilog(f(\vec x_i))+(1-y_i)log(1-f(\vec x_i))] \\
                    &= -[y_ilog(\frac{1}{1+e^{-\vec\beta \vec x_i}})+(1-y_i)log(1-\frac{1}{1+e^{-\vec\beta \vec x_i}})] \\
                    &= y_ilog(1+e^{-\vec\beta \vec x_i})-(1-y_i)log\frac{e^{-\vec\beta \vec x_i}}{1+e^{-\vec\beta \vec x_i}}\\
                    &= y_ilog(1+e^{-\vec\beta \vec x_i})-(1-y_i)log\frac{1}{1+e^{\vec\beta \vec x_i}} \\
                    &= y_ilog(1+e^{-\vec\beta \vec x_i})+(1-y_i)log(1+e^{\vec\beta \vec x_i})
-\end{split}
-\end{equation} \tag{8}
+\end{aligned}
+\tag{8}
 $$
 
 假设$$h$$是另外一个hypothesis function，且$$h=\vec\beta \vec x$$，把$$h$$带入$$(8)$$式可以得到
